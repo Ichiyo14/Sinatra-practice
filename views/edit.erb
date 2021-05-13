@@ -1,0 +1,8 @@
+<form action="/memos/<%= @id %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type='text' name="title" value="<%= @title %>">
+  <p>
+  <textarea name="content"><%= @content %></textarea>
+  </p>
+  <input type="submit" value="変更">
+</form>
