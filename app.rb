@@ -4,11 +4,18 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'securerandom'
 require 'json'
+require 'erb'
+
+helpers do
+  def h(text)
+    escape_html(text)
+  end
+end
 
 post '/memos' do
   id = SecureRandom.uuid
-  @title = params['title'].to_s
-  @content = params['content'].to_s
+  @title = h(params['title']).to_s
+  @content = h(params['content']).to_s
   make_data(id, @title, @content)
   redirect '/memos'
 end
@@ -47,8 +54,8 @@ delete '/memos/:id' do |id|
 end
 
 patch '/memos/:id' do |id|
-  @title = params['title'].to_s
-  @content = params['content'].to_s
+  @title = h(params['title']).to_s
+  @content = h(params['content']).to_s
   make_data(id, @title, @content)
   redirect '/memos'
 end
@@ -66,10 +73,5 @@ def to_file(memo_data, id)
 end
 
 def use_data(id)
-  p a = File.read("memos/#{id}")
-  JSON.parse(a, symbolize_names: true)
+  JSON.parse(File.read("memos/#{id}"), symbolize_names: true)
 end
-
-# def puts_memos_list
-#     Dir.glob("*", base:"memos")
-#     end
