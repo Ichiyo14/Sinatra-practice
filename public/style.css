@@ -81,6 +81,7 @@ body {
 article {
   width: 640px;
   margin: 0 auto;
+  word-wrap: break-word;
 }
 
 h1{
@@ -173,4 +174,8 @@ input.delete{
   background:black;
   font-size:1.1em;
   cursor: pointer;
+}
+
+pre{
+  white-space: pre-wrap;
 }
