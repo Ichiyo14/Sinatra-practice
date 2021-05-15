@@ -21,10 +21,7 @@ post '/memos' do
 end
 
 get '/memos' do
-  @memos = []
-  Dir.glob('*', base: 'memos').sort_by { |f| File.mtime("memos/#{f}") }.each do |id|
-    @memos << use_data(id)
-  end
+  @memos = Dir.glob('*', base: 'memos').sort_by { |f| File.mtime("memos/#{f}") }.reverse.map { |id| use_data(id) }
   erb :index
 end
 
