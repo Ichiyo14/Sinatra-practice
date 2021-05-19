@@ -1,0 +1,181 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+////////////////////////////////////////
+reset.css では足りない初期化を追加
+////////////////////////////////////////
+*/
+
+/* 全てに box-sizing: border-box; を適用 */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* 画像に関する初期設定 */
+img {
+  /* 大きい画像がはみ出さないように */
+  max-width: 100%;
+  /* 画像周りの無駄なスペースができないように */
+  vertical-align: bottom;
+}
+
+[data-whatinput="mouse"] *:focus,
+[data-whatinput="touch"] *:focus {
+  outline: none;
+}
+
+/*
+////////////////////////////////////////
+初期設定
+////////////////////////////////////////
+*/
+
+body {
+  padding: 32px 0;
+  color: #56564f;
+}
+
+article {
+  width: 640px;
+  margin: 0 auto;
+  word-wrap: break-word;
+}
+
+h1{
+  line-height:1.4;
+  font-size:2.2em;
+  font-weight:bold;
+  letter-spacing:0.2em;
+  border-bottom:solid 2px #7058a3;
+  text-align:center;
+  margin-bottom:0.5em;
+}
+
+h2{
+  font-size:1.5em;
+  font-weight:bold;
+  border-bottom:solid 1px #7058a3;
+  margin:10px 0px
+}
+
+ul{
+  padding-left:30px;
+  list-style:square;
+  margin-bottom:30px;
+}
+
+p{
+  margin-bottom:1em;
+}
+
+a.new{
+  display:inline-block;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  vertical-align: right;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background:rgb(46, 46, 107);
+  margin:0 0 10px 470px;
+}
+
+a.patch {
+  display:inline-block;
+ padding: 0.5rem 1.5rem;
+ cursor: pointer;
+ vertical-align: right;
+ text-decoration: none;
+ letter-spacing: 0.1em;
+ color: #fff;
+ background:blue;
+  margin:20px 0px 10px 170px;
+}
+
+body{
+  line-height:1.8;
+  background-color:#f3f3f3;
+}
+
+
+input.submit{
+  display:inline-block;
+  margin:20px 0px 10px 250px;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  background:black;
+  font-size:1.1em;
+  cursor: pointer;
+}
+
+textarea{
+  margin-top:10px;
+  vertical-align:middle;
+  display:block;
+  width:640px;
+  height:400px;
+}
+
+input.text{
+  display:block;
+  width:640px;
+  height:2em;
+  
+}
+
+input.delete{
+  display:inline-block;
+  margin:20px 0px 10px 100px;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  background:black;
+  font-size:1.1em;
+  cursor: pointer;
+}
+
+pre{
+  white-space: pre-wrap;
+}

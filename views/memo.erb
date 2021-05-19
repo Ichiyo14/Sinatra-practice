@@ -1,0 +1,8 @@
+<h2><%= @title %></h2>
+<pre><%= @content %></pre>
+<form action="/memos/<%= @id %>" method="post">
+  <a href="/memos/<%= @id %>/edit"  class="patch">更新</a>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="削除" class="delete">
+</form>
+
