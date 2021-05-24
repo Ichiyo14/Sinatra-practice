@@ -21,14 +21,14 @@ end
 
 post '/memos' do
   id = SecureRandom.uuid
-  @title = params['title'].to_s
-  @content = params['content'].to_s
-  make_data(id, @title, @content)
+  title = params['title'].to_s
+  content = params['content'].to_s
+  make_data(id, title, content)
   redirect '/memos'
 end
 
 get '/memos' do
-  @memos = CONN.exec('SELECT * FROM memos').map { |memo_data| memo_data }.reverse
+  @memos = CONN.exec('SELECT * FROM memos ORDER BY update_datetime DESC').map { |memo_data| memo_data }
   erb :index
 end
 
@@ -37,7 +37,7 @@ get '/memos/new' do
 end
 
 get '/memos/:id/edit' do |id|
-  hash = use_data(id)
+  hash = fetch_data(id)
   @id = h(id.to_s)
   @title = h(hash[0]['title'])
   @content = h(hash[0]['content'])
@@ -45,7 +45,7 @@ get '/memos/:id/edit' do |id|
 end
 
 get '/memos/:id' do |id|
-  hash = use_data(id)
+  hash = fetch_data(id)
   @id = h(id.to_s)
   @title = h(hash[0]['title'])
   @content = h(hash[0]['content'])
@@ -65,15 +65,15 @@ patch '/memos/:id' do |id|
 end
 
 def make_data(id, title, content)
-  CONN.exec('INSERT INTO memos VALUES($1, $2, $3);', [id, title, content])
+  CONN.exec('INSERT INTO memos VALUES($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);', [id, title, content])
 end
 
-def use_data(id)
+def fetch_data(id)
   CONN.exec('SELECT * FROM memos WHERE id=$1;', [id])
 end
 
 def patch_data(id, title, content)
-  CONN.exec('UPDATE memos SET title = $2 , content = $3 WHERE id = $1;', [id, title, content])
+  CONN.exec('UPDATE memos SET title = $2 , content = $3 , update_datetime = CURRENT_TIMESTAMP WHERE id = $1;', [id, title, content])
 end
 
 def delete_data(id)
