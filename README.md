@@ -13,7 +13,7 @@
 1.  自身のpcへクローンしてください。
 2.  `$ createdb memo_app` で memo_appのデータベースを作成します。
 4.  `$ psql memo_app` でmemo_appのデータベースへ接続してください。
-6.  `memo_app=# CREATE TABLE memos (id VARCHAR, title VARCHAR, content VARCHAR);` でmemosのテーブルを作成してください。
+6.  `memo_app=# CREATE TABLE memos (id VARCHAR, title VARCHAR, content VARCHAR, update_datetime timestamp, created_datetime timestamp);` でmemosのテーブルを作成してください。
 7.  `memo_app=# \q` でデータベース接続を終えてください。
 8.  クローンしたディレクトリ内で`$ bundle install`
 9.  `$ bundle exec ruby app.rb` で起動します。
