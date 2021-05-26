@@ -37,18 +37,16 @@ get '/memos/new' do
 end
 
 get '/memos/:id/edit' do |id|
-  hash = fetch_data(id)
   @id = h(id.to_s)
-  @title = h(hash[0]['title'])
-  @content = h(hash[0]['content'])
+  @title = h(fetch_data(id)['title'])
+  @content = h(fetch_data(id)['content'])
   erb :edit
 end
 
 get '/memos/:id' do |id|
-  hash = fetch_data(id)
   @id = h(id.to_s)
-  @title = h(hash[0]['title'])
-  @content = h(hash[0]['content'])
+  @title = h(fetch_data(id)['title'])
+  @content = h(fetch_data(id)['content'])
   erb :memo
 end
 
@@ -69,7 +67,7 @@ def make_data(id, title, content)
 end
 
 def fetch_data(id)
-  CONN.exec('SELECT * FROM memos WHERE id=$1;', [id])
+  CONN.exec('SELECT * FROM memos WHERE id=$1;', [id])[0]
 end
 
 def patch_data(id, title, content)
